@@ -39,7 +39,7 @@ const AnonMessageController = {
             console.log(response)
             if (response.rowCount > 0) {
                 return res.status(200).json({
-                    code: "List successfull",
+                    code: "LIST_SUCCESSFULL",
                     data: response.rows
                 })
             }

@@ -3,7 +3,8 @@ require("dotenv").config();
 const AnonMessageController = require("./controllers/AnonMessage");
 const UsersController = require("./controllers/UsersController");
 const verifyJWT = require("./middleware/verifyJWT");
-const cors = require("cors")
+const cors = require("cors");
+const CheckPermissionController = require("./controllers/CheckPermissionController");
 const app = express()
 const PORT = 3001
 
@@ -25,6 +26,7 @@ app.use(verifyJWT)
 
 app.post('/api/createuser', UsersController.usersCreate)
 app.post('/api/listmessage', AnonMessageController.listMessage)
+app.post('/api/checkpermission', CheckPermissionController.checkPermission)
 
 
 app.listen(PORT, () => {
