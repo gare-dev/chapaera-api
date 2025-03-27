@@ -1,11 +1,14 @@
 const AnonMessageModel = require("../models/AnonMessage");
-
+const requestIp = require("request-ip")
 
 const AnonMessageController = {
     insertMessage: async (req, res) => {
         const { message, name } = req.body
         const ip = req.ip || req.connection.remoteAddress;
         const user_agent = req.headers["user-agent"];
+        console.log(req.headers['x-forwarded-for'])
+        const reqIp = requestIp.getClientIp(req)
+
 
         if (!message) {
             return res.status(400).json({
@@ -13,9 +16,8 @@ const AnonMessageController = {
                 code: "MISSING_MESSAGE"
             })
         }
-
         try {
-            const response = await AnonMessageModel.insertMessage(name, message, ip, user_agent)
+            const response = await AnonMessageModel.insertMessage(name, message, reqIp, user_agent)
 
             if (response.rowCount === 1) {
                 return res.status(200).json({
