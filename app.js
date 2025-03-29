@@ -27,6 +27,7 @@ app.use(verifyJWT)
 app.post('/api/createuser', UsersController.usersCreate)
 app.post('/api/listmessage', AnonMessageController.listMessage)
 app.post('/api/checkpermission', CheckPermissionController.checkPermission)
+app.post('/api/markasvisu', AnonMessageController.markAsVisualized)
 
 
 app.listen(PORT, () => {
