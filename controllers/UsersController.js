@@ -88,7 +88,8 @@ const UsersController = {
                 code: "LOGIN_ERROR"
             })
         }
-    }
+    },
+
 }
 
 module.exports = UsersController
