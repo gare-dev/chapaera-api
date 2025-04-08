@@ -7,6 +7,8 @@ const cors = require("cors");
 const CheckPermissionController = require("./controllers/CheckPermissionController");
 const MatchesController = require("./controllers/MatchesController");
 const AvisosController = require("./controllers/AvisosController");
+const ResultsTableController = require("./controllers/ResultsTableController");
+const PointsTableMController = require("./controllers/PointsTableMController");
 const app = express()
 const PORT = 3001
 
@@ -27,6 +29,7 @@ app.post('/api/creatematch', MatchesController.insertMatch)
 app.post('/api/consultmatch', MatchesController.consultMatchDate)
 app.post('/api/getmatches', MatchesController.getMatches)
 app.post('/api/listaviso', AvisosController.listAviso)
+app.post('/api/listresultM', PointsTableMController.listTableM)
 
 app.use(verifyJWT)
 
@@ -39,6 +42,7 @@ app.post('/api/markasvisu', AnonMessageController.markAsVisualized)
 app.post('/api/createaviso', AvisosController.insertAviso)
 app.post('/api/deleteaviso', AvisosController.deleteAviso)
 app.post('/api/editaviso', AvisosController.editAviso)
+app.post('/api/insertresult', ResultsTableController.insertResults)
 
 
 
